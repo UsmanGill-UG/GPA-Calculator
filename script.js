@@ -1,4 +1,3 @@
-// Get a reference to the "Add Course" button and the courses container
 const addCourseBtn = document.querySelector("#addCourse");
 const removeCourseBtn = document.querySelector("#removeCourse");
 const coursesContainer = document.querySelector("#courses");
@@ -7,17 +6,21 @@ let course_list = []
 let credithour_list = []
 let grade_list = []
 
-// Add a click event listener to the "Add Course" button
 addCourseBtn.addEventListener("click", (event) => {
   event.preventDefault();
-  // Create a new course element with input fields for the course name and credit hour
   const newCourse = document.createElement("div");
   newCourse.classList.add("course");
   newCourse.innerHTML = `
     <input type="text" name="coursename" placeholder="Course"  >
-    <input type="number" name="credithour" placeholder="Credit Hour" step="1" min="0" max="4" >
+            <select name="credithour">
+            <option value="100">Credit Hour</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
   <select name="grade" >
-                <option value="">Select Grade</option>
+                <option value="">Grade</option>
                 <option value="4.0">A+</option>
                 <option value="4.0">A</option>
                 <option value="3.67">A-</option>
@@ -32,8 +35,6 @@ addCourseBtn.addEventListener("click", (event) => {
                 <option value="0.0">F</option>
             </select>
     `;
-
-  // Add the new course element to the courses container
   coursesContainer.appendChild(newCourse);
 });
 
@@ -45,17 +46,12 @@ removeCourseBtn.addEventListener("click", () => {
 
 
 inputForm.addEventListener("submit", function (event) {
-  // Prevent the form from submitting
   event.preventDefault();
-
-  // Get all the course elements
   const courses = document.querySelectorAll(".course");
-
-  // Loop through the course elements and collect their values
   const courseData = [];
   courses.forEach(function (course) {
     const coursename = course.querySelector('[name="coursename"]').value;
-    const credithour = course.querySelector('[name="credithour"]').value;
+    const credithour = course.querySelector('select[name="credithour"]').value;
     const grade = course.querySelector('select[name="grade"]').value;
     courseData.push({ coursename, credithour, grade });
   });
@@ -74,13 +70,7 @@ inputForm.addEventListener("submit", function (event) {
 
   credithour_list = credithour_list.map(Number);
   grade_list = grade_list.map(Number);
-
-  console.log(course_list);
-  console.log(credithour_list);
-  console.log(grade_list);
-
-  var sgpa = calculateSGPA();
-  console.log("sgpa: ", sgpa);
+  let sgpa = calculateSGPA();
   document.getElementById("sgpa").innerHTML = "SGPA: " + sgpa;
 });
 

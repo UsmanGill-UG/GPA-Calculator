@@ -8,14 +8,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>GPA Calculator</h1>
+    <h1>ITU GPA Calculator</h1>
 <form id="inputForm">
+    <input id="currentgpa" type="number" name="currentgpa" placeholder="Current GPA" step="0.1" min="0" max="4">
+    <input id="creditearned" type="number" name="creditearned" placeholder="Credit Hours Earned">
     <div id="courses">
         <div class="course">
+
             <input type="text" name="coursename" placeholder="Course" >
-            <input type="number" name="credithour" placeholder="Credit Hour" step="1" min="0" max="4" >
+        <select name="credithour">
+            <option value="100">Credit Hour</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
             <select name="grade" >
-                <option value="100">Select Grade</option>
+                <option value="100">Grade</option>
                 <option value="4.0">A+</option>
                 <option value="3.7">A</option>
                 <option value="3.3">A-</option>
