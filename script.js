@@ -79,7 +79,9 @@ inputForm.addEventListener("submit", function (event) {
   console.log(credithour_list);
   console.log(grade_list);
 
-  console.log(calculateSGPA());
+  var sgpa = calculateSGPA();
+  console.log("sgpa: ", sgpa);
+  document.getElementById("sgpa").innerHTML = "SGPA: " + sgpa;
 });
 
 function calculateSGPA() {
