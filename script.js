@@ -3,11 +3,9 @@ const addCourseBtn = document.querySelector("#addCourse");
 const removeCourseBtn = document.querySelector("#removeCourse");
 const coursesContainer = document.querySelector("#courses");
 const inputForm = document.getElementById("inputForm");
-const course_list = []
-const credithour_list = []
-const grade_list = []
-
-
+let course_list = []
+let credithour_list = []
+let grade_list = []
 
 // Add a click event listener to the "Add Course" button
 addCourseBtn.addEventListener("click", (event) => {
@@ -62,14 +60,42 @@ inputForm.addEventListener("submit", function (event) {
     courseData.push({ coursename, credithour, grade });
   });
 
+  // clearing list
+  course_list.length = 0;
+  credithour_list.length = 0;
+  grade_list.length = 0;
+
   courseData.forEach(function (course) {
     course_list.push(course.coursename);
     credithour_list.push(course.credithour);
     grade_list.push(course.grade);
   });
 
+
+  credithour_list = credithour_list.map(Number);
+  grade_list = grade_list.map(Number);
+
   console.log(course_list);
   console.log(credithour_list);
   console.log(grade_list);
+
+  console.log(calculateSGPA());
 });
 
+function calculateSGPA() {
+  // if (creditHours.length !== grades.length) {
+  //   throw new Error("Number of credit hours and grades do not match");
+  // }
+
+  const totalCredits = credithour_list.reduce((acc, val) => acc + val, 0);
+  console.log("totalCredits: ", totalCredits);
+  let totalGradePoints = 0;
+
+  for (let i = 0; i < credithour_list.length; i++) {
+    totalGradePoints += credithour_list[i] * grade_list[i];
+  }
+
+  console.log("totalGradePoints: ", totalGradePoints);
+  const sgpa = totalGradePoints / totalCredits;
+  return sgpa.toFixed(2); // round to 2 decimal places
+}
