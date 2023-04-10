@@ -48,6 +48,9 @@ removeCourseBtn.addEventListener("click", () => {
 inputForm.addEventListener("submit", function (event) {
   event.preventDefault();
   const courses = document.querySelectorAll(".course");
+  const current_cgpa = document.querySelector('[name="currentgpa"]').value;
+  const creditsearned = document.querySelector('[name="creditearned"]').value;
+
   const courseData = [];
   courses.forEach(function (course) {
     const coursename = course.querySelector('[name="coursename"]').value;
@@ -71,7 +74,16 @@ inputForm.addEventListener("submit", function (event) {
   credithour_list = credithour_list.map(Number);
   grade_list = grade_list.map(Number);
   let sgpa = calculateSGPA();
+  let semester_credits = credithour_list.reduce((acc, val) => acc + val, 0);
+  console.log("sgpa: ", sgpa," SC: ", semester_credits);
   document.getElementById("sgpa").innerHTML = "SGPA: " + sgpa;
+
+  //  CGPA calculation
+  let totalCredits = semester_credits + creditsearned;
+  let semester_QP = semester_credits * sgpa;
+  let prev_QP = current_cgpa * creditsearned;
+  let CGPA = (prev_QP + semester_QP) / (totalCredits);
+  document.getElementById("cgpa").innerHTML = "CGPA: " + CGPA;
 });
 
 function calculateSGPA() {
@@ -80,11 +92,15 @@ function calculateSGPA() {
   // }
 
   const totalCredits = credithour_list.reduce((acc, val) => acc + val, 0);
-  console.log("totalCredits: ", totalCredits);
+  
   let totalGradePoints = 0;
 
+  console.log("totalCredits: ", totalCredits);
+  console.log("grade_list: ", grade_list);
+  console.log("credithour_list: ", credithour_list);
   for (let i = 0; i < credithour_list.length; i++) {
-    totalGradePoints += credithour_list[i] * grade_list[i];
+    totalGradePoints += (credithour_list[i] * grade_list[i]);
+    console.log("totalGradePoints: ", totalGradePoints);
   }
 
   console.log("totalGradePoints: ", totalGradePoints);
