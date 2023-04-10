@@ -87,14 +87,8 @@ inputForm.addEventListener("submit", function (event) {
 });
 
 function calculateSGPA() {
-  // if (creditHours.length !== grades.length) {
-  //   throw new Error("Number of credit hours and grades do not match");
-  // }
-
   const totalCredits = credithour_list.reduce((acc, val) => acc + val, 0);
-  
   let totalGradePoints = 0;
-
   console.log("totalCredits: ", totalCredits);
   console.log("grade_list: ", grade_list);
   console.log("credithour_list: ", credithour_list);
@@ -102,7 +96,6 @@ function calculateSGPA() {
     totalGradePoints += (credithour_list[i] * grade_list[i]);
     console.log("totalGradePoints: ", totalGradePoints);
   }
-
   console.log("totalGradePoints: ", totalGradePoints);
   const sgpa = totalGradePoints / totalCredits;
   return sgpa.toFixed(2); // round to 2 decimal places
