@@ -79,19 +79,23 @@ inputForm.addEventListener("submit", function (event) {
   document.getElementById("sgpa").innerHTML = "SGPA: " + sgpa;
 
   //  CGPA calculation
-  let totalCredits = semester_credits + creditsearned;
+  let totalCredits = Number(semester_credits) + Number(creditsearned);
+  console.log("total CG credits: ", totalCredits);
   let semester_QP = semester_credits * sgpa;
+  console.log("Semester QP: ", semester_QP);
   let prev_QP = current_cgpa * creditsearned;
+  console.log("prev_QP: ", prev_QP);
   let CGPA = (prev_QP + semester_QP) / (totalCredits);
+  console.log("CGPA: ", CGPA);
   document.getElementById("cgpa").innerHTML = "CGPA: " + CGPA;
 });
 
 function calculateSGPA() {
   const totalCredits = credithour_list.reduce((acc, val) => acc + val, 0);
   let totalGradePoints = 0;
-  console.log("totalCredits: ", totalCredits);
-  console.log("grade_list: ", grade_list);
-  console.log("credithour_list: ", credithour_list);
+  // console.log("totalCredits: ", totalCredits);
+  // console.log("grade_list: ", grade_list);
+  // console.log("credithour_list: ", credithour_list);
   for (let i = 0; i < credithour_list.length; i++) {
     totalGradePoints += (credithour_list[i] * grade_list[i]);
     console.log("totalGradePoints: ", totalGradePoints);

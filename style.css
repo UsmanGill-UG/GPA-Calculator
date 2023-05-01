@@ -1,11 +1,67 @@
-h1{
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    padding: 30px;
+}
+
+h1 {
     text-align: center;
+    color: #333;
 }
 
 form {
-    text-align: center;
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
 }
 
-h3{
+input[type="number"],
+input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+select {
+    width: 49%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+button,
+input[type="submit"] {
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background-color: #555;
+}
+
+.course {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#addCourse,
+#removeCourse {
+    width: 49%;
+    margin-bottom: 10px;
+}
+
+h3 {
     text-align: center;
 }

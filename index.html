@@ -9,6 +9,8 @@
 </head>
 <body>
     <h1>ITU GPA Calculator</h1>
+        <h3 id="sgpa">SGPA: </h3>
+        <h3 id="cgpa">CGPA: </h3>
     <form id="inputForm">
         <input id="currentgpa" type="number" name="currentgpa" placeholder="Current GPA" step="0.01" min="0" max="4">
         <input id="creditearned" type="number" name="creditearned" placeholder="Credit Hours Earned">
@@ -27,15 +29,15 @@
                         <option value="100">Grade</option>
                         <option value="4.0">A+</option>
                         <option value="4.0">A</option>
-                        <option value="3.3">A-</option>
-                        <option value="3.0">B+</option>
-                        <option value="2.7">B</option>
-                        <option value="2.3">B-</option>
-                        <option value="2.0">C+</option>
-                        <option value="1.7">C</option>
-                        <option value="1.3">C-</option>
-                        <option value="1.0">D+</option>
-                        <option value="0.7">D</option>
+                        <option value="3.67">A-</option>
+                        <option value="3.33">B+</option>
+                        <option value="3.00">B</option>
+                        <option value="2.67">B-</option>
+                        <option value="2.33">C+</option>
+                        <option value="2.0">C</option>
+                        <option value="1.67">C-</option>
+                        <option value="1.33">D+</option>
+                        <option value="1.0">D</option>
                         <option value="0.0">F</option>
                     </select>
                 </div>
@@ -45,8 +47,7 @@
             <input type="submit" value="Submit">
         </div> 
     </form>
-    <h3 id="sgpa">SGPA: </h3>
-    <h3 id="cgpa">CGPA: </h3>
+
     <script src="script.js"></script>
 </body>
 </html>
