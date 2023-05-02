@@ -88,6 +88,9 @@ inputForm.addEventListener("submit", function (event) {
   let CGPA = (prev_QP + semester_QP) / (totalCredits);
   console.log("CGPA: ", CGPA);
   document.getElementById("cgpa").innerHTML = "CGPA: " + CGPA;
+
+  document.getElementById('sgpa').style.display='block';
+  document.getElementById('cgpa').style.display='block';
 });
 
 function calculateSGPA() {

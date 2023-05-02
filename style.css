@@ -11,6 +11,10 @@ h1 {
     color: #333;
 }
 
+h3{
+    display: none;
+}
+
 form {
     max-width: 500px;
     margin: 30px auto;
